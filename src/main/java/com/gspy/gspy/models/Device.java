@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -32,6 +33,7 @@ public class Device implements Serializable {
 	private String modelo;
 	
 	@NotNull
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 	@JoinColumn(name = "userid", referencedColumnName = "userid")
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
